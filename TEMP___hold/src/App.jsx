@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from './components/common_comps';
+import { Link } from './components/common_comps/index';
 import './style.css';
 
 export default function App() {

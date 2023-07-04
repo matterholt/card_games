@@ -1,0 +1,12 @@
+h1,
+p {
+  font-family: Lato;
+  margin:1px;
+  padding:0px;
+}
+.hand_self {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 25px;
+}

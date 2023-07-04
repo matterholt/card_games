@@ -1,0 +1,52 @@
+.link_container {
+  background-color: rgb(238, 243, 241);
+  margin: 5px 0px;
+  padding: 2% 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 55px;
+  width: 250px;
+  border-radius: 5px;
+}
+.link_container:hover {
+  box-shadow: 3px 4px 6px rgb(155, 150, 150);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: grid;
+  place-content: center;
+}
+.link {
+  width: inherit;
+  height: inherit;
+  outline: none;
+  text-decoration: none;
+}
+.link:visited {
+  color: inherit;
+}
+.link:active {
+  color: rgb(194, 223, 212);
+}
+
+.comming_soon {
+  font-size: 0.7rem;
+  font-weight: 200;
+}
+.comming_soon::before,
+.comming_soon::after {
+  content: '...';
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.inactive {
+  background-color: rgb(223, 223, 223);
+  color: rgb(54, 54, 54);
+}
