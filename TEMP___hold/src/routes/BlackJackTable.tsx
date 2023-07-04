@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from '../components/common_comps/index';
 
 // const temp_logic =()={

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import styles from './link.module.css';
 
 // if no link provided then have a different layout

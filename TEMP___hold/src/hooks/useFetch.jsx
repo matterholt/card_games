@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useState, useEffect, Suspense } from 'react';
 
 //https://usehooks-ts.com/react-hook/use-fetch
