@@ -9,7 +9,7 @@ const TableHeader = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <header>
+    <header className={styles.table_header}>
       <h2>{title}</h2>
       {children}
     </header>

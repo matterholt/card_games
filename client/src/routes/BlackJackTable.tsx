@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from '../components/common_comps/index';
+
+import { Link,TableHeader } from '../components/common_comps';
 
 // const temp_logic =()={
 //   const { fetchedData, status, sending } = useFetch();
@@ -25,7 +25,10 @@ import { Link } from '../components/common_comps/index';
 export default function BlackJackTable() {
   return (
     <div>
-      <Link title="Main Table" link="./" />
+      <TableHeader title="black jack">
+      <Link title="Main Table" link="../" />
+
+      </TableHeader>
     </div>
   );
 }
