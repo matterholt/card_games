@@ -1,6 +1,4 @@
-
-import { Link,TableHeader } from '../components/common_comps';
-
+import { PresentationBlackJack } from "../components/black_jack";
 // const temp_logic =()={
 //   const { fetchedData, status, sending } = useFetch();
 
@@ -22,13 +20,16 @@ import { Link,TableHeader } from '../components/common_comps';
 //   return <CurrentHand dealtCards={fetchedData.cards} />;
 // }
 
-export default function BlackJackTable() {
-  return (
-    <div>
-      <TableHeader title="black jack">
-      <Link title="Main Table" link="../" />
+/*
 
-      </TableHeader>
-    </div>
-  );
+TODO:
+
+make this the data layer
+
+
+
+*/
+
+export default function BlackJackGame() {
+  return <PresentationBlackJack />;
 }

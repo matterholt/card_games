@@ -1,25 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from './App';
-import BlackJackTable from './routes/BlackJackTable';
-import Error_page from './components/error_handlers/Error_page';
+import App from "./App";
+import BlackJackGame from "./routes/BlackJackGame";
+import Error_page from "./components/error_handlers/ErrorPage";
 
 const router = createBrowserRouter([
-  { path: '/', element: <App />, errorElement: <Error_page /> },
+  { path: "/", element: <App />, errorElement: <Error_page /> },
   {
-    path: 'table/blackjack',
-    element: <BlackJackTable />,
+    path: "table/blackjack",
+    element: <BlackJackGame />,
   },
 ]);
 
-
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    </React.StrictMode>
-)
-
+  </React.StrictMode>
+);

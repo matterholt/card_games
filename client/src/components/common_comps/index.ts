@@ -1,6 +1,7 @@
 import Link from './link/Link';
 import TableHeader from './table_header/TableHeader';
 import DealingCards from './loading_states/DealingCards';
-import UsersCurrentHand from './users_current_cards/UsersCurrentCards';
+import CurrentPlayedCards from './current_played_cards/CurrentPlayedCards';
 
-export { Link, TableHeader, DealingCards, UsersCurrentHand };
+
+export { Link, TableHeader, DealingCards, CurrentPlayedCards };
