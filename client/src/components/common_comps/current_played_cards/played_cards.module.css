@@ -1,0 +1,16 @@
+.dealer {
+  grid-area: "dealer";
+  background-color: aliceblue;
+}
+.player1 {
+  grid-area: "player1";
+}
+.faceDownDeck {
+  grid-area: "faceDownDeck";
+}
+.player2 {
+  grid-area: "player2";
+}
+.player3 {
+  grid-area: "player3";
+}
