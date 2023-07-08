@@ -1,7 +1,6 @@
 import styleCard from "./played_cards.module.css";
 import React from "react";
-
-const joinClass = (arg: string[]) => arg.join(" ");
+import { joinClass } from "@/helpers/cssHelpers";
 
 interface PlayedCards {
   position: string;
