@@ -1,9 +1,10 @@
-.table_header{
-    text-transform: uppercase;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width:100%;
-    outline: solid;
-    margin:5px;
+.table_header {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75%;
+  outline: solid;
+  margin: 15px;
+  padding: 10px;
 }

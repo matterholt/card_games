@@ -1,10 +1,12 @@
 .tableLayoutBlackjack {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  width: 90vw;
+  height: 70vw;
   outline: solid;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
-    ". dealer . "
-    "player2 faceDownDeck player 3"
-    ". player1 .";
+    "dealer playersGrouped"
+    "faceDownDeck playersGrouped"
+    "player1 player1";
 }

@@ -1,18 +1,39 @@
 import { Link, TableHeader, CurrentPlayedCards } from "../../common_comps";
 import { TableLayout } from "../../black_jack";
 
+interface DealtCards {
+  code: string;
+  suit: string;
+  value: string;
+  image: string;
+}
+
 const PresentationBlackJack = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "column",
+        width: "100vw",
+        alignItems: "center",
+      }}
+    >
       <TableHeader title="black jack">
         <Link title="Main Table" link="../" />
       </TableHeader>
       <TableLayout>
-        <CurrentPlayedCards player="dealer" />
-        <CurrentPlayedCards player="faceDownDeck" />
-        <CurrentPlayedCards player="player1" />
-        <CurrentPlayedCards player="player2" />
-        <CurrentPlayedCards player="player3" />
+        <CurrentPlayedCards position="dealer">
+          <p>Dealer</p>
+        </CurrentPlayedCards>
+        <CurrentPlayedCards position="faceDownDeck">
+          <p>face down deck</p>
+        </CurrentPlayedCards>
+        <CurrentPlayedCards position="player1">
+          <p>Logged In player</p>
+        </CurrentPlayedCards>
+        <CurrentPlayedCards position="playersGrouped">
+          <p>other players</p>
+        </CurrentPlayedCards>
       </TableLayout>
     </div>
   );

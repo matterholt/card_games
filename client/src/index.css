@@ -1,18 +1,15 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: #242424;
-
 }
 
 p {
   margin: 0;
-
 }
 
 body {
   margin: 0;
   display: flex;
-
   min-width: 320px;
   min-height: 100vh;
 }
@@ -21,5 +18,3 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
-
