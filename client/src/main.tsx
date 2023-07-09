@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import ErrorBoundary from "./components/error_handlers/ErrorBoundary";
+
+import { ErrorBoundary } from "react-error-boundary";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ErrorBoundary>
+    <ErrorBoundary fallback={<div>Something went wrong</div>}>
       <RouterProvider router={router} />
     </ErrorBoundary>
   </React.StrictMode>
