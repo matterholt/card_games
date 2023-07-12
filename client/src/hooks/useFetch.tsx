@@ -1,46 +1,56 @@
-import { useState, useEffect, Suspense } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 
-//https://usehooks-ts.com/react-hook/use-fetch
+// loading, error, success
 
-// use update the status and make that how fetch the data, then able to pass in options
+const initialState = {
+  status: "idle",
+  error: undefined,
+  data: undefined,
+};
 
-// 1. convert to reducer
-/**
- *  Actions
- * 1. new deck
- * 2. deal [numb]
- * 3. draw 1
- *
- */
-
-function useFetch() {
-  const [fetchedData, setFetchData] = useState({});
-  const [status, setStatus] = useState("waiting");
-  const [message, setMessage] = useState();
-
-  let options = { deck: "new", cardCount: 2 };
-  const _URL = `https://deckofcardsapi.com/api/deck/${options.deck}/draw/?count=${options.cardCount}`;
-
-  async function sending() {
-    try {
-      setStatus("dealing");
-      const response = await fetch(_URL);
-      const resData = await response.json();
-
-      if (resData.success) {
-        setFetchData(resData);
-        setStatus("gameOn");
-      } else {
-        console.log("error");
-        setFetchData(resData.error);
-        setStatus("error");
-      }
-    } catch (error) {
-      // need to get a erro boundry
-      console.log(error);
-      throw new Error(error);
-    }
+const fetchReducer = (state: any, action: any) => {
+  switch (action.type) {
+    case "loading":
+      return { ...initialState, status: "loading" };
+    case "error":
+      return { ...initialState, status: "error", error: action.payload };
+    case "success":
+      return { ...initialState, status: "success", data: action.payload };
+    default:
+      return state;
   }
-  return { fetchedData, status, sending };
+};
+
+function useFetch(URL: string) {
+  // const [URL, setURL] = useState(
+  //   () => "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+  // );
+  const [state, dispatch] = useReducer(fetchReducer, initialState);
+
+  const fetchData = async (URL: string) => {
+    dispatch({ type: "loading" });
+    try {
+      const response = await fetch(URL);
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      const data = await response.json();
+
+      dispatch({ type: "success", payload: data });
+    } catch (err) {
+      dispatch({ type: "error", payload: err as Error });
+    }
+  };
+
+  function callForCard(deckID, cardCount) {
+    console.log("fetch another card from the API");
+  }
+
+  useEffect(() => {
+    fetchData(URL);
+  }, [URL]);
+
+  return [state, callForCard];
 }
-export default useFetch;
+
+export { useFetch };

@@ -1,29 +1,23 @@
 import React from "react";
 import { PresentationBlackJack } from "../components/black_jack";
-import useFetch from "../hooks/useFetch";
+
+import { useUrlFetch } from "../hooks/useUrlFetch";
 
 // set up game container,
 // react use context?
 
-const numberOfPlayers = 2;
-const cardsDealOut = 2 * numberOfPlayers;
+// const numberOfPlayers = 2;
+// const cardsDealOut = 2 * numberOfPlayers;
+
+// let options = { deck: "new", cardCount: 2 };
+const _URL = `https://deckofcardsapi.com/api/deck/new/draw/?count=2`;
 
 function BlackJackGame() {
-  const { fetchedData, status, sending } = useFetch();
+  const state = useUrlFetch(_URL);
+
   React.useEffect(() => {
-    console.log({ fetchedData, status, sending });
-  }, [fetchedData, sending, status]);
-
-  // Intail
-
-  if (status === "waiting") {
-    return (
-      <div>
-        waiting for action
-        <button onClick={() => console.log("change state")}>DEAL</button>
-      </div>
-    );
-  }
+    console.log(state);
+  });
 
   return <PresentationBlackJack />;
 }

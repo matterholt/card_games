@@ -1,6 +1,7 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef } from "react";
 
 interface State<T> {
+  status?: string;
   data?: T;
   error?: Error;
 }
@@ -9,11 +10,11 @@ type Cache<T> = { [url: string]: T };
 
 // discriminated union type
 type Action<T> =
-  | { type: 'loading' }
-  | { type: 'fetched'; payload: T }
-  | { type: 'error'; payload: Error };
+  | { type: "loading" }
+  | { type: "fetched"; payload: T }
+  | { type: "error"; payload: Error };
 
-export function useFetch<T = unknown>(
+export function useUrlFetch<T = unknown>(
   url?: string,
   options?: RequestInit
 ): State<T> {
@@ -23,6 +24,7 @@ export function useFetch<T = unknown>(
   const cancelRequest = useRef<boolean>(false);
 
   const initialState: State<T> = {
+    status: "waiting",
     error: undefined,
     data: undefined,
   };
@@ -30,11 +32,11 @@ export function useFetch<T = unknown>(
   // Keep state logic separated
   const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
     switch (action.type) {
-      case 'loading':
+      case "loading":
         return { ...initialState };
-      case 'fetched':
+      case "fetched":
         return { ...initialState, data: action.payload };
-      case 'error':
+      case "error":
         return { ...initialState, error: action.payload };
       default:
         return state;
@@ -45,16 +47,17 @@ export function useFetch<T = unknown>(
 
   useEffect(() => {
     // Do nothing if the url is not given
+    console.log("useURLfetch");
     if (!url) return;
 
     cancelRequest.current = false;
 
     const fetchData = async () => {
-      dispatch({ type: 'loading' });
+      dispatch({ type: "loading" });
 
       // If a cache exists for this url, return it
       if (cache.current[url]) {
-        dispatch({ type: 'fetched', payload: cache.current[url] });
+        dispatch({ type: "fetched", payload: cache.current[url] });
         return;
       }
 
@@ -68,11 +71,11 @@ export function useFetch<T = unknown>(
         cache.current[url] = data;
         if (cancelRequest.current) return;
 
-        dispatch({ type: 'fetched', payload: data });
+        dispatch({ type: "fetched", payload: data });
       } catch (error) {
         if (cancelRequest.current) return;
 
-        dispatch({ type: 'error', payload: error as Error });
+        dispatch({ type: "error", payload: error as Error });
       }
     };
 

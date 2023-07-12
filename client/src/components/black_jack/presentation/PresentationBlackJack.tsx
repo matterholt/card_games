@@ -1,13 +1,6 @@
 import { Link, TableHeader, CurrentPlayedCards } from "../../common_comps";
 import { TableLayout } from "../../black_jack";
 
-interface DealtCards {
-  code: string;
-  suit: string;
-  value: string;
-  image: string;
-}
-
 const PresentationBlackJack = () => {
   return (
     <div

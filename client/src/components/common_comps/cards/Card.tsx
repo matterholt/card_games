@@ -1,3 +1,10 @@
+interface DealtCards {
+  code: string;
+  suit: string;
+  value: string;
+  image: string;
+}
+
 const Cards = ({ dealtCards }: { dealtCards: DealtCards[] }) => {
   {
     dealtCards.map((x) => (
