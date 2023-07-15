@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useRef, useState, useCallback } from "react";
-
+import { sortOutDealtCards } from "../helpers/";
 // loading, error, success
 
 const initialState = {
@@ -34,15 +34,8 @@ function useFetch(URL: string) {
       const incomingData = await response.json();
       // sort out card data,
       const { success, deck_id, cards } = incomingData;
-
-      // call total amount of cards
-      // create a stack
-      // pop off into number of players
-      // just like dealing
-
-      const dealersCards = [cards[1], cards[4]];
-
-      console.log(incomingData);
+      const deckStack = sortOutDealtCards(cards, 2);
+      console.log(deckStack);
 
       if (!state.data) {
         dispatch({ type: "success", payload: incomingData });
