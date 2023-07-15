@@ -1,1 +1,1 @@
-export const joinClass = (arg: string[]) => arg.join(" ");
+export const joinCssClass = (arg: string[]) => arg.join(" ");

@@ -8,7 +8,7 @@ import { useFetch } from "./hooks/useFetch";
 
 const Player = ({
   title,
-  callForCard,
+  callForCardOne,
   DELT,
 }: {
   title: any;
@@ -16,9 +16,9 @@ const Player = ({
   DELT: any;
 }) => {
   return (
-    <div style={{ background: "white", width: "50vw", height: "50vh" }}>
+    <div style={{ background: "white", width: "100vw", height: "50vh" }}>
       <h2>
-        {title} <button onClick={() => callForCard()}>get another</button>
+        {title} <button onClick={() => callForCardOne()}>get another</button>
       </h2>
       {JSON.stringify(DELT)}
     </div>
@@ -32,6 +32,13 @@ export default function App() {
     `https://www.deckofcardsapi.com/api/deck/new/draw/?count=${NUMBER_DELT}`
   );
 
+  // const dealerHand = gameSetup.slice(0, Math.ceil(gameSetup.length / 2));
+
+  function requestAnotherCard(deckId, numbOfCard) {
+    callForCard(
+      `https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=${numbOfCard}`
+    );
+  }
   return (
     <div style={{ display: "flex", flexFlow: "column", width: "100vw" }}>
       <Link title="black jack" link="./table/blackjack" />
@@ -43,7 +50,7 @@ export default function App() {
         <Player
           title="Player One"
           deckId={gameSetup?.data?.deck_id}
-          callForCard={() => callForCard(gameSetup?.data?.cards[0], 1)}
+          callForCardOne={() => requestAnotherCard(gameSetup?.data?.deck_id, 1)}
           DELT={[gameSetup?.data?.cards[0], gameSetup?.data?.cards[1]]}
         />
       ) : null}

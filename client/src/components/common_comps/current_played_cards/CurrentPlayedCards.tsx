@@ -1,6 +1,6 @@
 import styleCard from "./played_cards.module.css";
 import React from "react";
-import { joinClass } from "@/helpers/cssHelpers";
+import { joinCssClass } from "@/helpers/cssHelpers";
 
 interface PlayedCards {
   position: string;
@@ -10,7 +10,7 @@ interface PlayedCards {
 const CurrentPlayedCards = ({ position, children }: PlayedCards) => {
   return (
     <div
-      className={joinClass([styleCard[position], styleCard.cards_container])}
+      className={joinCssClass([styleCard[position], styleCard.cards_container])}
     >
       {children}
     </div>
