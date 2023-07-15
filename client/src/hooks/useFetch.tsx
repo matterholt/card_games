@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState, useCallback } from "react";
 
 // loading, error, success
 
@@ -22,9 +22,6 @@ const fetchReducer = (state: any, action: any) => {
 };
 
 function useFetch(URL: string) {
-  // const [URL, setURL] = useState(
-  //   () => "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
-  // );
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   const fetchData = async (URL: string) => {
@@ -34,23 +31,38 @@ function useFetch(URL: string) {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      const data = await response.json();
+      const incomingData = await response.json();
+      // sort out card data,
+      const { success, deck_id, cards } = incomingData;
 
-      dispatch({ type: "success", payload: data });
+      // call total amount of cards
+      // create a stack
+      // pop off into number of players
+      // just like dealing
+
+      const dealersCards = [cards[1], cards[4]];
+
+      console.log(incomingData);
+
+      if (!state.data) {
+        dispatch({ type: "success", payload: incomingData });
+        return;
+      }
+      const additionCards = [...state.data.cards, ...incomingData.cards];
+      const updatesOnState = { ...incomingData, ...{ cards: additionCards } };
+
+      dispatch({ type: "success", payload: updatesOnState });
     } catch (err) {
       dispatch({ type: "error", payload: err as Error });
     }
   };
 
-  function callForCard(deckID, cardCount) {
-    console.log("fetch another card from the API");
-  }
-
   useEffect(() => {
+    // debating on removing useEffect
     fetchData(URL);
   }, [URL]);
 
-  return [state, callForCard];
+  return [state, fetchData];
 }
 
 export { useFetch };
