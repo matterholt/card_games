@@ -1,11 +1,6 @@
-interface DealtCards {
-  code: string;
-  suit: string;
-  value: string;
-  image: string;
-}
+import { DealtCard } from "../../../types/types";
 
-const Cards = ({ dealtCards }: { dealtCards: DealtCards[] }) => {
+const Cards = ({ dealtCards }: { dealtCards: DealtCard[] }) => {
   {
     dealtCards.map((x) => (
       <div key={x.code}>

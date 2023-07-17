@@ -33,17 +33,22 @@ function useFetch(URL: string) {
       }
       const incomingData = await response.json();
       // sort out card data,
-      const { success, deck_id, cards } = incomingData;
-      const deckStack = sortOutDealtCards(cards, 2);
-      console.log(deckStack);
 
       if (!state.data) {
-        dispatch({ type: "success", payload: incomingData });
+        const { success, deck_id, remaining, cards } = incomingData;
+        const deckStack = sortOutDealtCards(cards, 2);
+        console.log({ success, deck_id, remaining, cards: deckStack });
+        dispatch({
+          type: "success",
+          payload: { success, deck_id, remaining, cards: deckStack },
+        });
         return;
       }
+
+      const playersCards = state?.cards;
+
       const additionCards = [...state.data.cards, ...incomingData.cards];
       const updatesOnState = { ...incomingData, ...{ cards: additionCards } };
-
       dispatch({ type: "success", payload: updatesOnState });
     } catch (err) {
       dispatch({ type: "error", payload: err as Error });
