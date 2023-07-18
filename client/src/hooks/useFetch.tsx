@@ -21,10 +21,10 @@ const fetchReducer = (state: any, action: any) => {
   }
 };
 
-function useFetch(URL: string) {
+function useFetch<T = unknown>(URL?: string, options?: any) {
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
-  const fetchData = async (URL: string) => {
+  const fetchData = async (URL: string, playerKey?: string) => {
     dispatch({ type: "loading" });
     try {
       const response = await fetch(URL);
@@ -36,8 +36,7 @@ function useFetch(URL: string) {
 
       if (!state.data) {
         const { success, deck_id, remaining, cards } = incomingData;
-        const deckStack = sortOutDealtCards(cards, 2);
-        console.log({ success, deck_id, remaining, cards: deckStack });
+        const deckStack = sortOutDealtCards(cards, options.cardDraw); // need to make dynamic
         dispatch({
           type: "success",
           payload: { success, deck_id, remaining, cards: deckStack },
@@ -45,7 +44,11 @@ function useFetch(URL: string) {
         return;
       }
 
-      const playersCards = state?.cards;
+      //
+
+      // console.log("NEED TO ADD MORE CARDS TO PALYER", state);
+
+      // const playersCards = state?.cards;
 
       const additionCards = [...state.data.cards, ...incomingData.cards];
       const updatesOnState = { ...incomingData, ...{ cards: additionCards } };

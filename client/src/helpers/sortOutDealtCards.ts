@@ -3,14 +3,14 @@ import { DealtCard } from "../types/types";
 function sortOutDealtCards(dealtCards: DealtCard[], numberOfPlayers: number) {
   let activeContainer = 0;
   // eslint-disable-next-line prefer-spread
-  let container = Array.apply(null, Array(numberOfPlayers)).map(function () {
+  const container = Array.apply(null, Array(numberOfPlayers)).map(function () {
     return [];
   });
 
+  // CHANGE TO RECURSION, MIGHT BE BETTER
   for (let i = 0; i < dealtCards.length; i++) {
-    // const currentWorking = ;
-    container[activeContainer].push(dealtCards[i]);
-    // currentWorking.push(dealtCards[i]);
+    const currentValue = dealtCards[i];
+    container[activeContainer].push(currentValue);
 
     if (activeContainer == container.length - 1) {
       activeContainer = 0;
@@ -19,12 +19,12 @@ function sortOutDealtCards(dealtCards: DealtCard[], numberOfPlayers: number) {
     activeContainer++;
   }
 
-  // change the player array into a Map
-  //
-  console.log("RESULTS ", container);
   const [dealer, ...otherSetOfCards] = container;
 
   const players = Object.assign({}, otherSetOfCards);
+
+  console.log("SORT", container);
+  console.log("SORT", { dealer, players });
 
   return { dealer, players };
 }
