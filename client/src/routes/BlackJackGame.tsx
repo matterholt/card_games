@@ -24,12 +24,8 @@ function BlackJackGame() {
     );
   }
 
-  const deckID = gameSetup.deck_id;
-  const remainingInDeck = gameSetup.remaining;
-  // create context
-  // or use
+  const remainingInDeck = gameSetup?.data?.remaining || undefined;
 
-  // const [dealer, players] = gameSetup?.data?.cards;
   React.useEffect(() => {
     console.log(gameSetup);
   });
@@ -47,7 +43,11 @@ function BlackJackGame() {
     return <p> ran out of cards</p>;
   }
   return (
-    <PresentationBlackJack dealtCards={gameSetup.data?.cards} deckID={deckID} />
+    <PresentationBlackJack
+      dealtCards={gameSetup.data?.cards}
+      deckID={gameSetup.data?.deck_id}
+      remainingCards={remainingInDeck}
+    />
   );
 }
 
