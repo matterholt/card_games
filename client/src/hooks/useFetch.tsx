@@ -35,20 +35,14 @@ function useFetch<T = unknown>(URL?: string, options?: any) {
       // sort out card data,
 
       if (!state.data) {
-        const { success, deck_id, remaining, cards } = incomingData;
-        const deckStack = sortOutDealtCards(cards, options.cardDraw); // need to make dynamic
+        const { deck_id, remaining, cards } = incomingData;
+        const deckStack = sortOutDealtCards(cards, 2, options.cardDraw); // need to make dynamic
         dispatch({
           type: "success",
-          payload: { success, deck_id, remaining, cards: deckStack },
+          payload: { deck_id, remaining, cards: deckStack },
         });
         return;
       }
-
-      //
-
-      // console.log("NEED TO ADD MORE CARDS TO PALYER", state);
-
-      // const playersCards = state?.cards;
 
       const additionCards = [...state.data.cards, ...incomingData.cards];
       const updatesOnState = { ...incomingData, ...{ cards: additionCards } };
@@ -60,7 +54,7 @@ function useFetch<T = unknown>(URL?: string, options?: any) {
 
   useEffect(() => {
     // debating on removing useEffect
-    fetchData(URL);
+    fetchData(URL, options);
   }, [URL]);
 
   return [state, fetchData];

@@ -1,7 +1,8 @@
 import { Link, TableHeader, CurrentPlayedCards } from "../../common_comps";
 import { TableLayout } from "../../black_jack";
 
-const PresentationBlackJack = () => {
+const PresentationBlackJack = ({ dealtCards, deckID }) => {
+  const { dealer, players } = dealtCards;
   return (
     <div
       style={{

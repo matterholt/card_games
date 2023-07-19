@@ -22,10 +22,7 @@ function sortOutDealtCards(dealtCards: DealtCard[], numberOfPlayers: number) {
   const [dealer, ...otherSetOfCards] = container;
 
   const players = Object.assign({}, otherSetOfCards);
-
-  console.log("SORT", container);
-  console.log("SORT", { dealer, players });
-
+  console.log(container);
   return { dealer, players };
 }
 

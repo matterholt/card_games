@@ -23,31 +23,32 @@ function BlackJackGame() {
       `https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=${numbOfCard}`
     );
   }
+
+  const deckID = gameSetup.deck_id;
+  const remainingInDeck = gameSetup.remaining;
   // create context
   // or use
 
   // const [dealer, players] = gameSetup?.data?.cards;
+  React.useEffect(() => {
+    console.log(gameSetup);
+  });
 
+  if (gameSetup.status === "idle") {
+    return <div>Deal</div>;
+  }
   if (gameSetup.status === "loading") {
     return <div>LOADING</div>;
   }
-  if (gameSetup.error) {
+  if (gameSetup.status === "error") {
     return <div>error</div>;
   }
-
-  // return <PresentationBlackJack />;
-  return <TEMPPRES dealtCards={gameSetup.data?.cards} />;
-}
-
-const TEMPPRES = (dealtCards) => {
-  const { dealer, players } = dealtCards;
-
+  if (remainingInDeck === 0) {
+    return <p> ran out of cards</p>;
+  }
   return (
-    <div>
-      <p> DEALERS HADN{JSON.stringify(dealer)}</p>
-      <p> PLAYERS HADN{JSON.stringify(players)}</p>
-    </div>
+    <PresentationBlackJack dealtCards={gameSetup.data?.cards} deckID={deckID} />
   );
-};
+}
 
 export default BlackJackGame;
