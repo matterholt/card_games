@@ -3,6 +3,7 @@ import {
   TableHeader,
   CurrentPlayedCards,
   Cards,
+  PlayerActions,
 } from "../../common_comps";
 import { TableLayout } from "../../black_jack";
 
@@ -38,6 +39,7 @@ const PresentationBlackJack = ({ dealtCards, deckID, remainingCards }) => {
         </CurrentPlayedCards>
         <CurrentPlayedCards position="player1">
           <p>Logged In player</p>
+          <PlayerActions />
           <Cards cardInPlay={loggedInPlayer} />
         </CurrentPlayedCards>
         <CurrentPlayedCards position="playersGrouped">
