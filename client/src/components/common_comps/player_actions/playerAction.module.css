@@ -1,0 +1,5 @@
+.ulList {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}

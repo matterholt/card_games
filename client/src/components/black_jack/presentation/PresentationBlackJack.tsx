@@ -39,8 +39,8 @@ const PresentationBlackJack = ({ dealtCards, deckID, remainingCards }) => {
         </CurrentPlayedCards>
         <CurrentPlayedCards position="player1">
           <p>Logged In player</p>
-          <PlayerActions />
           <Cards cardInPlay={loggedInPlayer} />
+          <PlayerActions />
         </CurrentPlayedCards>
         <CurrentPlayedCards position="playersGrouped">
           <p>other players</p>

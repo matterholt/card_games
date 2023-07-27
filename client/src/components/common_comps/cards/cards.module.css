@@ -1,0 +1,9 @@
+.cardsOnTable {
+  display: flex;
+  margin: 10px;
+  position: relative;
+  height: 150px;
+}
+.card {
+  position: absolute;
+}
