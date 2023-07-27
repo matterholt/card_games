@@ -1,4 +1,4 @@
-import { DealtCard } from "../types/types";
+import { DealtCard } from "../Types/types";
 
 function sortOutDealtCards(dealtCards: DealtCard[], numberOfPlayers: number) {
   let activeContainer = 0;

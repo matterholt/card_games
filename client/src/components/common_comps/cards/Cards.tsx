@@ -1,4 +1,4 @@
-import { DealtCard } from "../../../types/types";
+import { DealtCard } from "../../../Types/types";
 
 const Cards = ({ cardInPlay }: { cardInPlay: DealtCard[] }) => {
   return (
