@@ -1,0 +1,7 @@
+.card {
+  position: absolute;
+}
+.cardValue {
+  font-size: 10px;
+  outline: solid;
+}

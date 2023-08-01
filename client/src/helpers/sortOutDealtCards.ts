@@ -1,6 +1,6 @@
-import { DealtCard } from "../Types/types";
+import { CardType } from "../components/Types/types";
 
-function sortOutDealtCards(dealtCards: DealtCard[], numberOfPlayers: number) {
+function sortOutDealtCards(dealtCards: CardType[], numberOfPlayers: number) {
   let activeContainer = 0;
   // eslint-disable-next-line prefer-spread
   const container = Array.apply(null, Array(numberOfPlayers)).map(function () {
@@ -22,7 +22,7 @@ function sortOutDealtCards(dealtCards: DealtCard[], numberOfPlayers: number) {
   const [dealer, ...otherSetOfCards] = container;
 
   const players = Object.assign({}, otherSetOfCards);
-  console.log(container);
+
   return { dealer, players };
 }
 

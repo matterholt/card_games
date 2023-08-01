@@ -46,8 +46,6 @@ export function useUrlFetch<T = unknown>(
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {
-    // Do nothing if the url is not given
-    console.log("useURLfetch");
     if (!url) return;
 
     cancelRequest.current = false;

@@ -14,7 +14,7 @@ function PlayerActions() {
     <div>
       <ul className={actionList.ulList}>
         {tempActionList.map((x) => (
-          <li>
+          <li key={x}>
             <Button>{x}</Button>
           </li>
         ))}

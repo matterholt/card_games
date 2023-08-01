@@ -2,18 +2,32 @@ import {
   Link,
   TableHeader,
   CurrentPlayedCards,
-  Cards,
+  DealtCards,
   PlayerActions,
 } from "../../common_comps";
 import { TableLayout } from "../../black_jack";
+import { CardDeckId, CardDeckCount } from "../../Types/types";
+import React from "react";
 
-const PresentationBlackJack = ({ dealtCards, deckID, remainingCards }) => {
+const PresentationBlackJack = ({
+  dealtCards,
+  deckID,
+  remainingCards,
+}: {
+  dealtCards;
+  deckID: CardDeckId;
+  remainingCards: CardDeckCount;
+}) => {
   const { dealer, players } = dealtCards;
 
   // split array, if there is anything left over then
   // think should change to an object which will be better to
   // define which card belong to which player
   const loggedInPlayer = players[0];
+
+  React.useEffect(() => {
+    console.log({ dealtCards, deckID, remainingCards });
+  });
 
   return (
     <div
@@ -30,7 +44,7 @@ const PresentationBlackJack = ({ dealtCards, deckID, remainingCards }) => {
       <TableLayout>
         <CurrentPlayedCards position="dealer">
           <p>Dealer</p>
-          <Cards cardInPlay={dealer} />
+          <DealtCards cardInPlay={dealer} cardDealtTo="dealer" />
         </CurrentPlayedCards>
         <CurrentPlayedCards position="faceDownDeck">
           <p>face down deck</p>
@@ -39,7 +53,7 @@ const PresentationBlackJack = ({ dealtCards, deckID, remainingCards }) => {
         </CurrentPlayedCards>
         <CurrentPlayedCards position="player1">
           <p>Logged In player</p>
-          <Cards cardInPlay={loggedInPlayer} />
+          <DealtCards cardInPlay={loggedInPlayer} />
           <PlayerActions />
         </CurrentPlayedCards>
         <CurrentPlayedCards position="playersGrouped">

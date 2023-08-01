@@ -26,10 +26,6 @@ function BlackJackGame() {
 
   const remainingInDeck = gameSetup?.data?.remaining || undefined;
 
-  React.useEffect(() => {
-    console.log(gameSetup);
-  });
-
   if (gameSetup.status === "idle") {
     return <div>Deal</div>;
   }

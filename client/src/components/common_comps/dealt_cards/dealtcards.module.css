@@ -1,9 +1,7 @@
 .cardsOnTable {
   display: flex;
+  flex-direction: column;
   margin: 10px;
   position: relative;
-  height: 150px;
-}
-.card {
-  position: absolute;
+  min-height: 150px;
 }
