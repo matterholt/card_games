@@ -1,6 +1,9 @@
-.tableLayoutBlackjack {
+.tableSizeBlackjack {
   min-width: 90vw;
   min-height: 30vw;
+}
+
+.tableGridLayout {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 2fr 1fr 2fr;
@@ -8,4 +11,12 @@
     "dealer playersGrouped"
     "faceDownDeck playersGrouped"
     "player1 player1";
+}
+.tableSingleColumn {
+  display: grid;
+  grid-template-rows: 2fr 1fr 2fr;
+  grid-template-areas:
+    "dealer"
+    "faceDownDeck"
+    "player1";
 }

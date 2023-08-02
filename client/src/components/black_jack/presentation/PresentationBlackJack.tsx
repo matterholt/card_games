@@ -24,10 +24,7 @@ const PresentationBlackJack = ({
   // think should change to an object which will be better to
   // define which card belong to which player
   const loggedInPlayer = players[0];
-
-  React.useEffect(() => {
-    console.log({ dealtCards, deckID, remainingCards });
-  });
+  const otherPlayers = Object.keys(players).length > 1;
 
   return (
     <div
@@ -41,7 +38,9 @@ const PresentationBlackJack = ({
       <TableHeader title="black jack">
         <Link title="Main Table" link="../" />
       </TableHeader>
-      <TableLayout>
+      <TableLayout
+        layoutStyle={otherPlayers ? "showOtherPlayers" : "justDealer"}
+      >
         <CurrentPlayedCards position="dealer">
           <p>Dealer</p>
           <DealtCards cardInPlay={dealer} cardDealtTo="dealer" />
@@ -53,12 +52,16 @@ const PresentationBlackJack = ({
         </CurrentPlayedCards>
         <CurrentPlayedCards position="player1">
           <p>Logged In player</p>
-          <DealtCards cardInPlay={loggedInPlayer} />
+          <DealtCards cardInPlay={loggedInPlayer} cardDealtTo="loggedInUser" />
           <PlayerActions />
         </CurrentPlayedCards>
-        <CurrentPlayedCards position="playersGrouped">
-          <p>other players</p>
-        </CurrentPlayedCards>
+        {otherPlayers ? (
+          <CurrentPlayedCards position="playersGrouped">
+            <p>other players</p>
+          </CurrentPlayedCards>
+        ) : (
+          <div></div>
+        )}
       </TableLayout>
     </div>
   );
