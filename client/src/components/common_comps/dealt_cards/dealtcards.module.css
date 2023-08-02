@@ -3,5 +3,7 @@
   flex-direction: column;
   margin: 10px;
   position: relative;
-  min-height: 150px;
+  min-height: 200px;
+  justify-content: flex-end;
+  align-items: flex-start;
 }

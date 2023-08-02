@@ -5,6 +5,7 @@ import CurrentPlayedCards from "./current_played_cards/CurrentPlayedCards";
 import DealtCards from "./dealt_cards/DealtCards";
 import Card from "./card/Card";
 import PlayerActions from "./player_actions/PlayerActions";
+import CardValueHeader from "./card_value_header/CardValueHeader";
 
 export {
   Link,
@@ -14,4 +15,5 @@ export {
   CurrentPlayedCards,
   DealtCards,
   PlayerActions,
+  CardValueHeader,
 };
