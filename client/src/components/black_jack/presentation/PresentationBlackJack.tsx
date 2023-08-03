@@ -26,6 +26,12 @@ const PresentationBlackJack = ({
   const loggedInPlayer = players[0];
   const otherPlayers = Object.keys(players).length > 1;
 
+  function DrawCard(cardCount: number, playerId: string) {
+    console.log(
+      `player ${playerId} request to draw ${cardCount} numbers of cards`
+    );
+  }
+
   return (
     <div
       style={{
@@ -53,7 +59,7 @@ const PresentationBlackJack = ({
         <CurrentPlayedCards position="player1">
           <p>Logged In player</p>
           <DealtCards cardInPlay={loggedInPlayer} cardDealtTo="loggedInUser" />
-          <PlayerActions />
+          <PlayerActions drawCard={DrawCard} />
         </CurrentPlayedCards>
         {otherPlayers ? (
           <CurrentPlayedCards position="playersGrouped">
